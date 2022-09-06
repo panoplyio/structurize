@@ -13,7 +13,7 @@
         "test": "mocha"
     },
     "dependencies": {
-        "overflow": "1.1.4"
+        "overflow": "git+https://github.com/panoplyio/overflow.git#v1.1.5"
     },
     "devDependencies": {
         "csv-parse": "^1.0.4",
