@@ -2,9 +2,9 @@
     "name": "structurize",
     "version": "1.4.2",
     "description": "Text format hinting library for estimating the format of a given input string",
-    "author": "Roi Avinoam <avinoamr@gmail.com>",
-    "repository": "github:panoplyio/structurize",
+    "author": "Panoply",
     "license": "MIT",
+    "repository": "github:panoplyio/structurize",
     "files": [
         "/src"
     ],
