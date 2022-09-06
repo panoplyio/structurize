@@ -1,6 +1,6 @@
 var assert = require( "assert" );
 var zlib = require( "zlib" );
-var s = require( "./index" );
+var s = require( ".." );
 var type;
 var expectedCSVData = [
     {
@@ -34,7 +34,7 @@ var expectedCSVData = [
 ]
 
 it( "guesses xlsx", function () {
-    var spreadsheet = require( "fs" ).readFileSync( "./test.xlsx" );
+    var spreadsheet = require( "fs" ).readFileSync( "./test/test.xlsx" );
     type = s.guess(spreadsheet)
     assert.equal( type, "xlsx" )
 })
@@ -79,13 +79,13 @@ it( "guesses query strings", function () {
 })
 
 it( "guesses tar", function () {
-    var tarball = require( "fs" ).readFileSync( "./test.tar" );
+    var tarball = require( "fs" ).readFileSync( "./test/test.tar" );
     type = s.guess( tarball );
     assert.equal( type, "tar" );
 })
 
 it( "parses xlsx", function ( done ) {
-    var spreadsheet = require( "fs" ).readFileSync( "./test.xlsx" );
+    var spreadsheet = require( "fs" ).readFileSync( "./test/test.xlsx" );
     var data = [];
     s.parser( "xlsx" )
         .on( "data", function (d) {
@@ -156,7 +156,7 @@ it( "parses xlsx", function ( done ) {
 })
 
 it( "parses tar", function ( done ) {
-    var tarball = require( "fs" ).readFileSync( "./test.tar" );
+    var tarball = require( "fs" ).readFileSync( "./test/test.tar" );
     var data = [];
     s.parser( "tar" )
         .on( "data", function ( d ) {
@@ -174,7 +174,7 @@ it( "parses tar", function ( done ) {
 })
 
 it( "parses csv with a configured delimiter", function ( done ) {
-    var csv = require( "fs" ).readFileSync( "./test.csv" );
+    var csv = require( "fs" ).readFileSync( "./test/test.csv" );
     var data = [];
     s.parser( "csv", { delimiter: "$" } )
         .on( "data", function ( d ) {
@@ -191,7 +191,7 @@ it( "parses csv with a configured delimiter", function ( done ) {
 })
 
 it( "parse csv with a configured escape (\")", function ( done ) {
-    var csv = require( "fs" ).readFileSync( "./test-quote-escape.csv" );
+    var csv = require( "fs" ).readFileSync( "./test/test-quote-escape.csv" );
     var data = [];
     s.parser( "csv", { escape: '"' } )
         .on( "data", function ( d ) {
@@ -206,7 +206,7 @@ it( "parse csv with a configured escape (\")", function ( done ) {
 })
 
 it( "parse csv with a default escape (\\)", function ( done ) {
-    var csv = require( "fs" ).readFileSync( "./test-backslash-escape.csv" );
+    var csv = require( "fs" ).readFileSync( "./test/test-backslash-escape.csv" );
     var data = [];
     s.parser( "csv", {} )
         .on( "data", function ( d ) {
@@ -221,7 +221,7 @@ it( "parse csv with a default escape (\\)", function ( done ) {
 })
 
 it('parse csv with a configured column', function(done) {
-    var csv = require('fs').readFileSync('./test.csv');
+    var csv = require('fs').readFileSync('./test/test.csv');
     var columns = ['a', 'b']
     var data = [];
     s.parser('csv', {columns: columns, delimiter: "$"})
@@ -287,7 +287,7 @@ it( "structurize guess and parse", function ( done ) {
 })
 
 it( "structurizes tar.gz", function ( done ) {
-    var tarball = require( "fs" ).readFileSync( "./test.tar" );
+    var tarball = require( "fs" ).readFileSync( "./test/test.tar" );
     var data = [];
     s().on( "data", function ( d ) {
         data.push( d )
@@ -333,7 +333,7 @@ it( "supports map and filter", function ( done ) {
 
 
 it( "supports multiple files stream", function ( done ) {
-    var tarball = require( "fs" ).readFileSync( "./test.tar" );
+    var tarball = require( "fs" ).readFileSync( "./test/test.tar" );
     var gzipped = zlib.gzipSync( tarball )
     gzipped.name = "test.tgz"
 

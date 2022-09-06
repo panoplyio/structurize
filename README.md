@@ -1,4 +1,5 @@
 # structurize
+
 Text format hinting library for estimating the format of a given input string and generic parsing API. The use case is that you receive some input file from a user and need to estimate what format it's in and how to parse it.
 
 Currently supports the following:
@@ -14,10 +15,10 @@ Currently supports the following:
 
 > **NOTE**: it's generally a bad idea to "guess" the format of an input semi-structured text file, because there are endless edge cases. It's always advised to use an explicit format type from the user, using the file extension or otherwise. The library attempts to cover most obvious situations.
 
-#### Usage
+## Usage
 
-```
-$ npm install structurize
+```bash
+npm install structurize
 ```
 
 ```javascript
@@ -59,7 +60,7 @@ structurize()
   })
 ```
 
-#### Multi
+## Multi
 
 It's common to have multiple inputs with different formats, and wanting to parse all of them via a single stream, for example when reading a list of unidentified files.  `structurize.multi` is a helper stream supporting this use case:
 
